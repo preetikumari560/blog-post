@@ -1,0 +1,175 @@
+html
+{
+    margin: 0;
+    padding: 0;
+    min-width: 500px;
+    
+
+}
+
+body{
+    
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    
+    }
+
+main{
+        margin: 0 70px;
+        min-height: 66.5%;
+       
+    }
+
+header{
+    /* min-width: 50vmin; */
+   display: grid;
+   grid-template-columns: auto 50%;
+   grid-row: auto;
+   background-color: #F5F5F5;
+   column-gap: 50px;
+   color:#b0a9a9;
+
+}
+
+header h1
+{   
+    font-weight: normal;
+   grid-row: 1;
+   grid-column: 1/2;
+   padding: 10px;
+   margin-left: 60px;
+   margin-right: 60px;
+
+}
+
+p{
+
+    font-size: large;
+}
+
+h2
+{
+font-size: x-large;
+}
+
+
+nav{
+  
+    min-width: 50%;
+    grid-row: 1;
+    grid-column: 2/3;
+    margin: 26px 50px;
+    display: grid;
+    justify-content: end;
+    grid-template-columns: auto auto auto;
+    grid-row: auto;
+    column-gap: 20px;
+}
+
+nav
+{
+    grid-row: 1;
+    grid-column: 2/3;
+}
+
+nav a
+{
+    color: #b0a9a9;
+margin-left: 20px;
+padding: 10px;
+font-size: 20px;
+text-decoration: none;
+
+}
+
+nav a:hover
+{
+color: #1CD6CE;
+
+}
+
+a1
+{
+    grid-row: 1;
+    grid-column: 1/2;
+    justify-items: end;
+}
+
+a2
+{
+    grid-row: 1;
+    grid-column: 2/3;
+    justify-items: center;
+}
+
+a3
+{
+    grid-row: 1;
+    grid-column: 3/4;
+    justify-items: center;
+}
+
+footer
+{
+    /* position: absolute; */
+ 
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color:#03C988;
+    color: white;
+    text-align: center;
+
+
+}
+
+footer p
+{
+    padding: 35px ;
+    padding-bottom: 0;
+    font-size: larger;
+
+
+}
+
+.form-text
+{
+    width: 100%;
+    margin: 10px auto;
+   
+    border:  solid rgb(219, 213, 213) 2px;
+}
+
+input[type="text"]
+{
+height: 4vh;
+}
+
+
+
+
+fieldset
+{
+border: none;
+}
+
+button
+{   
+    font-size: large;
+    margin: 10px;
+    color: #F5F5F5;
+    background: #54e0ff;
+    background-image: -webkit-linear-gradient(top, #54e0ff, #4786ad);
+    background-image: -ms-linear-gradient(top, #54e0ff, #4786ad);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+
+}
+
+button:hover {
+    background: #a0e8ad;
+    background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
+
+}

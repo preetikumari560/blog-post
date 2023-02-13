@@ -1,0 +1,25 @@
+
+<%- include('partials/header'); -%>
+<main>
+    <section>
+        <h2>home</h2>
+        <p><%=startingContent %></p>
+    </section>
+    
+    <section>
+     <%   blogPost.forEach((element)=>{      %>
+        <!-- console.log(element.title ) -->
+
+        <h2> <%=element.title.substring(0, 100)  %> </h2> <!-- substring(0, 100) use to trunc long string where 0 is starting character nd 100 is 100th character ,at where we want a string to display-->
+        <p> <%=element.context.substring(0, 100) + "...." %> <a href= "/blogpost/<%=element.title%>" >Read More</a></p>
+     
+    <%  }     )  %>
+
+    </section>
+
+    </main>
+
+<%- include('partials/footer'); -%>
+
+
+
