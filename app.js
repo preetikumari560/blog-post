@@ -2,7 +2,11 @@ const express = require('express')
 
 const bodyParser = require('body-parser')
 
- const _ = require('lodash');  //it's a utility library that makes it easier to work with Javascript inside your Node apps.
+const mongoose = require("mongoose")
+
+const {config} = require('dotenv')
+
+const _ = require('lodash');  //it's a utility library that makes it easier to work with Javascript inside your Node apps.
 
 
 
@@ -12,21 +16,22 @@ const { stringify } = require('querystring')
 
 const app= express()
 
+config()
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.set('view engine','ejs')
 
 
-//requiring mongoose 
-const mongoose = require("mongoose")
+
 
 
 // //create new database inside mongodb local on system :
 //  mongoose.connect('mongodb://127.0.0.1:27017/blogDb');
 
+const mongodbUri = process.env.MONGODB_URL
  //create database inside mongodb atlas :
- mongoose.connect('mongodb+srv://preeti650goswami:lrlN7iYKdZtEJq1F@cluster0.t5chnp0.mongodb.net/blogDb');
+ mongoose.connect(mongodbUri);
 
 
 
@@ -168,8 +173,10 @@ app.post("/compose",(req,res)=>
 })
 
 
+const port = process.env.PORT || 3000
 
-app.listen('3000',()=>
+
+app.listen(port,()=>
 {console.log('server is running at port 3000')})
 
 
