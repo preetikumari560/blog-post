@@ -1,3 +1,4 @@
+require('dotenv').config()   // for .env file
 const express = require('express')
 
 const bodyParser = require('body-parser')
@@ -21,12 +22,14 @@ app.set('view engine','ejs')
 //requiring mongoose 
 const mongoose = require("mongoose")
 
-
+mongoose.set('strictQuery', false)
 // //create new database inside mongodb local on system :
 //  mongoose.connect('mongodb://127.0.0.1:27017/blogDb');
 
  //create database inside mongodb atlas :
- mongoose.connect('mongodb+srv://preeti650goswami:lrlN7iYKdZtEJq1F@cluster0.t5chnp0.mongodb.net/blogDb');
+ const url=`mongodb+srv://${process.env.CLIENT_ID}/blogDb`
+ 
+ mongoose.connect(url);
 
 
 
