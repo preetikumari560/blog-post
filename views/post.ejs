@@ -1,11 +1,16 @@
 
 <%- include('partials/header'); -%>
 
-<main class =post>
+<main class="post">
     <h1><%= title %></h1>
-    <form action="/blogpost/<%=id%>" method="post">   
-    <button type="submit" name="delete" value="<%=id%>"><img src="\images\delete.png" alt=""></button>   
+    <form action="/blogpost/delete/<%=id%>" method="post">   
+    <button class="delete" type="submit" name="delete" value="<%=id%>"><i class="bi bi-trash"></i></button> 
+
     </form>
+     <form action="/blogpost/edit/<%=id%>" method="get">   
+     <button class="edit" type="submit" name="edit" value="<%=id%>"><i class="bi bi-pen"></i></button> 
+    </form>
+
     <p><%= content %></p>
  
     

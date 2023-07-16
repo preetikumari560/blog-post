@@ -1,21 +1,31 @@
 <%- include('partials/header'); -%>
+
 <main>
-
-<form action="/compose" method="post">
-   
-   <fieldset>
-      <h2>Compose</h2>
-      <input class="form-text" type="text" name="postText" value=""  placeholder="">
-   </fieldset>
-
-   <fieldset>
-      <label for=""><h2>Post</h2></label>
-      <textarea class="form-text" name="postBody" id="" cols="30" rows="5"></textarea>
-
-   </fieldset>
-      <button type="submit" name="submit">Publish</button>
-   </form>
-
+  <form action="/compose" method="post" onsubmit="return validateForm()">
+    <fieldset>
+      <h2 class="compose-title">Title</h2>
+      <input class="form-text" type="text" name="postText" id="postText" placeholder="" >
+    </fieldset>
+    <fieldset>
+      <h2 class="compose-title">Content</h2>
+      <textarea class="form-text" name="postBody" id="postBody" cols="30" rows="5"></textarea>
+    </fieldset>
+    <button class="compose-button" name="submit" type="submit">Submit</button>
+  </form>
 </main>
 
 <%- include('partials/footer'); -%>
+
+<script>
+  function validateForm() {
+    const postText = document.getElementById("postText").value;
+    const postBody = document.getElementById("postBody").value;
+
+    if (!postText || !postBody) {
+      alert("Please fill in all fields.");
+      return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+  }
+</script>

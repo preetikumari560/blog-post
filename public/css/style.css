@@ -1,45 +1,79 @@
-html
-{
-    margin: 0;
-    padding: 0;
-    min-width: 500px;
-    position: relative;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
 }
 
-body{
-    
-    margin: 0;
+html,body {
+width: 100%;
+height: 100%;
+
+}
+
+p{
+    line-height: 30px;
+    padding: 50px;
+    text-align: justify;
+}
+
+h2
+{
+margin: 50px 50px 20px;
+
+font-size: 2rem;
+color:  #4c6d20;
+}
+
+header{
+
+   color:#b0a9a9;
+
+}
+
+.container-fluid
+{
+
+padding: 10px 30px;
+}
+
+.bg-light {
+    background-color: whitesmoke!important;
+}
+
+
+.navbar
+{
+margin: 0;
+}
+
+.navbar-brand
+{
+
     padding: 0;
-    height: 100vh;
-  display: flex;
-  flex-direction: column;
-    }
+    color: rgb(154 144 144 / 90%);
+}
+ .navbar-collapse {
 
+    justify-content: flex-end;
+}
 
-    a1
-    {
-        grid-row: 1;
-        grid-column: 1/2;
-        justify-items: end;
-    }
-    
-    a2
-    {
-        grid-row: 1;
-        grid-column: 2/3;
-        justify-items: center;
-    }
-    
-    a3
-    {
-        grid-row: 1;
-        grid-column: 3/4;
-        justify-items: center;
-    }
-    button
+.nav-item
+{
+padding-right: 40px;
+padding-left: 2px;
+color: #b0a9a9;
+}
+
+.nav-item a:hover
+{
+color: #1CD6CE;
+
+}
+
+ .compose-button,  .edit , .delete
     {   
-        font-size: large;
+      
         margin: 10px;
         color: #F5F5F5;
         background: #54e0ff;
@@ -51,25 +85,28 @@ body{
     
     }
     
-    button:hover {
+   .compose-button:hover  {
         background: #a0e8ad;
         background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
     
     }
+ .compose-button
+ {
 
+margin: 50px;
+ }
     
 .create-blog 
 {
  
-margin: 20px auto;
-display: grid;
-justify-content: center;
+margin: 50px auto;
+width: fit-content;
 
 }
 .create-blog a{
 
     text-decoration: none;
-    font-size: 30px;
+    font-size: 2rem;
     background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
     padding: 20px;
     border-radius: 11px;
@@ -82,31 +119,27 @@ justify-content: center;
 
 
 
-footer
-{
-    position: absolute;
- 
-    bottom: 0;
-    width:100vw;
-    height: 100px;
-    background-color:#03C988;
-    color: white;
-    text-align: center;
-    width:-webkit-fill-available;
-}
+.footer {
 
-footer p
+  bottom: 0;
+  width: 100%;
+  min-height: 76px;
+      background-color:#03C988;
+    color: white;
+
+}
+.footer>p
 {
     padding: 35px ;
     padding-bottom: 0;
-    font-size: larger;
-
+    font-size: 1rem;
+text-align: center;
 }
 
 .form-text
 {
-    width: 100%;
-    margin: 10px auto;
+    width: 80%;
+    margin: 0 50px;
    
     border:  solid rgb(219, 213, 213) 2px;
 }
@@ -117,82 +150,30 @@ border: none;
 }
 
 
-h2
+.home-content
 {
-font-size: x-large;
-color:  #4c6d20;
-}
-
-
-
-header{
-    /* min-width: 50vmin; */
-   display: grid;
-   grid-template-columns: auto 50%;
-   grid-row: auto;
-   background-color: #F5F5F5;
-   column-gap: 50px;
-   color:#b0a9a9;
+padding: 0px 100px ;
 
 }
 
-header h1
-{   
-    font-weight: normal;
-   grid-row: 1;
-   grid-column: 1/2;
-   padding: 10px;
-   margin-left: 60px;
-   margin-right: 60px;
-
+.home-content>h2
+{
+padding: 0;
+margin: 20px 0;
+font-size: 1.3rem;
 }
 
+.home-content>p
+{
+padding: 0;
+
+}
 
 input[type="text"]
 {
-height: 4vh;
-}
-
-
-main{
-        margin: 0 70px;
-        min-height: 66.5%;
-       
-    }
-
-    
-nav{
-  
-    min-width: 50%;
-    grid-row: 1;
-    grid-column: 2/3;
-    margin: 26px 50px;
-    display: grid;
-    justify-content: end;
-    grid-template-columns: auto auto auto;
-    grid-row: auto;
-    column-gap: 20px;
-}
-
-nav
-{
-    grid-row: 1;
-    grid-column: 2/3;
-}
-
-nav a
-{
-    color: #b0a9a9;
-margin-left: 20px;
-padding: 10px;
-font-size: 20px;
-text-decoration: none;
-
-}
-nav a:hover
-{
-color: #1CD6CE;
-
+height: 10vh;
+width: 80%;
+margin: 0 50px;
 }
 
 
@@ -200,56 +181,317 @@ color: #1CD6CE;
 
 .post
 {
-    height: 69.5vh;
-   display: grid;
-   
-   grid-template-columns: auto 200px;
-   grid-template-rows: 130px auto;
-   justify-content:stretch;
 
+display: grid;
+   
+grid-template-columns: 80% 10% 10%;
+grid-template-rows: 100px auto;
+color: black;
 }
 
 .post h1{
-  grid-column: 1;
-  font-size: 50px;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  font-size: 2.5rem;
   color: green;
-
+margin: 50px;
+text-align: center;
 }
 
 .post button{
-    grid-column: 2;
-   
-    margin-top: 30px;
 
-    text-align:end;
-    background-image: -webkit-linear-gradient(245deg, white, white);
-    padding-right: 20px;
-    width: 73px;
-    height: 62px;
-    padding-left: 20px;
-    padding-top: 15px;
-    padding-bottom: 30px;
-    border-radius: 100%;
-   
+    background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
+
+    color: black;
+    padding: 10px 15px;
+    border-radius: 75px;
+    margin: 50px 20px;
+}
     
+.delete
+{
+    grid-column: 2/3;
+    grid-row: 1/2;
+ 
 }
 
-.post img
+.edit
 {
-    padding-bottom: 0px;
-    width: 30px;
-    height: 30px;
+grid-column: 3/4;
+grid-row: 1/2;
+}
+.post p{
+grid-column: 1/4;
+grid-row: 2/3;
+text-align: justify;
+
 }
 
 .post button:hover {
-    background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
+color: white;
+}
+
+
+main
+{
+
+min-height: 78.8vh;
+}
+
+.aboutContact-main
+{
+min-height: 72vh;
+}
+
+.home-main
+
+{
+
+min-height: 72vh;
+}
+
+
+.navbar-toggler
+{
+position: relative;
+width: 30px;
+height: 30px;
+position: relative;
+transition: .5s ease-in-out;
+top:10px;
+
+}
+
+.navbar-toggler,.navbar-toggler:focus.navbar-toggler:active,.navbar-toggler-icon:focus
+
+{
+outline: none;
+box-shadow: none;
+border: 0;
+
+}
+
+.navbar-toggler span
+{
+margin: 0;
+padding: 0;
+
+}
+
+.toggler-icon
+{
+
+display: block;
+position: absolute;
+height: 4px;
+width: 100%;
+/* background: #d3531a; */
+border-radius: 1px;
+opacity: 1;
+left:0;
+transform: rotate(0deg);
+transition: .25s ease-in-out;
+}
+
+.middle-bar
+{
+margin-top: 0;
+
+}
+
+.navbar-toggler .top-bar
+{
+margin-top: 0;
+transform: rotate(135deg);
+background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
+}
+
+.navbar-toggler .middle-bar
+{
+opacity: 0;
+filter: alpha(opacity=0);
+}
+
+.navbar-toggler .bottom-bar
+
+{
+margin-top: 0;
+transform: rotate(-135deg);
+background-image: -webkit-linear-gradient(bottom, #a0e8ad, #3498db);
+}
+
+/* state when the navbar is collapsed */
+
+.navbar-toggler.collapsed .top-bar
+{
+margin-top: -10px;
+transform: rotate(0deg);
+background-image: -webkit-linear-gradient(top, #a0e8ad, #3498db);
+}
+
+.navbar-toggler.collapsed .middle-bar
+{
+opacity: 1;
+filter: alpha(opacity=100);
+background-image: -webkit-linear-gradient(bottom, #a0e8ad, #3498db);
+}
+.navbar-toggler.collapsed .bottom-bar
+{
+margin-top: 10px;
+transform: rotate(0deg);
+background-image: -webkit-linear-gradient(left, #a0e8ad, #3498db);
 }
 
 
 
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
 
-p{
+.navbar-toggler.collapsed .toggler-icon
+{
 
-    font-size: large;
-    line-height: 30px;
+background-color:rgb(189 184 184);
+}
+
+@media screen and (max-width:992px)
+{
+p {
+padding: 0 50px;
+}
+
+
+    
+    h2
+    {
+text-align: center;
+    }
+.create-blog a {
+   font-size: 1.5rem;
+       padding: 15px;
+
+}
+    .home-content>h2
+    {
+
+        text-align: left;
+    }
+
+    .compose-title
+    {
+        text-align: left;
+    }
+
+    .home-content {
+    padding: 0px 50px;
+}
+
+.post button {
+
+    margin: 50px 0;
+}
+.post h1 {
+
+    font-size: 2.2rem;
+ text-align: left;
+}
+}
+
+@media screen and (max-width:568px)
+{
+
+
+h2 {
+    margin: 20px 0px;
+    font-size: 1.8rem;
+
+}
+p {
+padding: 25px;
+}
+a
+{
+font-size: 0.8rem;
+}
+.create-blog a {
+   font-size: 1.2rem;
+
+}
+   
+
+    .home-content>h2
+    {
+
+       font-size: 1.2rem;
+       margin: 10px 0;
+    }
+
+    .compose-title
+    {
+        font-size: 1.5rem;
+    }
+
+input[type="text"] {
+  position: relative;
+    margin: 0;
+    left :50px;
+}
+
+.form-text {
+    position: relative;
+    margin: 0 ;
+    left :50px;
+}
+
+.compose-button
+{
+position: relative;
+display: block;
+margin: 30px auto;
+}
+.home-content {
+    padding: 0px 30px;
+}
+.home-content>p{
+margin-bottom: 25px;
+}
+
+.post h1 {
+
+    font-size: 2rem;
+ text-align: left;
+ margin: 35px 35px 0;
+}
+
+.post p
+{
+font-size: 1rem;
+padding: 20px 35px 0;
+}
+.post button {
+
+    padding: 4px 7px;
+    margin: 35px 0;
+
+
+
+}
+.edit
+{
+ position: relative;
+    left: -20px;
+}
+
+.delete
+{
+ position: relative;
+    left: -30px;
+}
+.footer>p {
+ 
+    font-size: 0.8rem;
+
+}
 }
