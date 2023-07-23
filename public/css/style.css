@@ -415,12 +415,7 @@ a
 {
 font-size: 0.8rem;
 }
-.create-blog a {
-   font-size: 1rem;
-   padding: 13px;
 
-}
-   
 
     .home-content>h2
     {
@@ -495,6 +490,13 @@ padding: 20px 35px 0;
     font-size: 0.8rem;
 
 }
+
+.create-blog a {
+   font-size: 1rem;
+   padding: 13px;
+
+}
+   
 }
 
 
@@ -504,10 +506,16 @@ padding: 20px 35px 0;
 {
 
 
-.create-blog a {
-   font-size: 0.8rem;
-   padding: 10px;
+
+.create-blog {
+ text-align: center;
+
 
 }
 
+
+.create-blog a{
+ 
+display: inline-block;
+}
 }
