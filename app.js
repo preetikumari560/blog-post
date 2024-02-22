@@ -1,5 +1,6 @@
 require('dotenv').config()   // for .env file
 const express = require('express')
+const fs = require('fs');
 
 const bodyParser = require('body-parser')
 
@@ -18,12 +19,24 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.set('view engine','ejs')
 
+const multer = require('multer');
+const path = require('path');
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads'); // Destination folder for storing uploads
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); // File naming
+  }
+});
+
+const upload = multer({ storage: storage });
 //requiring mongoose 
 const mongoose = require("mongoose")
 
 mongoose.set('strictQuery', false)
-// //create new database inside mongodb local on system :
+//create new database inside mongodb local on system :
 //  mongoose.connect('mongodb://127.0.0.1:27017/blogDb');
 
  //create database inside mongodb atlas :
@@ -35,7 +48,9 @@ mongoose.set('strictQuery', false)
 
 const blogSchema = {
             title:String,
-            content:String
+            content:String,
+            imagePath:String,
+            imageLink:String
             }
 
 
@@ -102,6 +117,8 @@ app.get("/blogpost/:id",(req,res)=>{
           title: post.title,
      
           content: post.content,
+          imagePath:post.imagePath,
+          imageLink:post.imageLink,
 
           id:post._id
 
@@ -111,52 +128,78 @@ app.get("/blogpost/:id",(req,res)=>{
      
       })
 
-
         })
       
     
-app.post("/blogpost/delete/:id",(req,res)=>
-{
-    const checkId = req.body.delete
-       
-        // or   Item.
-        Blog.deleteOne({_id:checkId},(err)=> 
 
-            { 
-                if(!err)
-                    {
-                    console.log("item deleted successfully")
-                    res.redirect("/")
-                    }
-                else
-                    {
-                    console.log(err)  
-                    } 
-            }) 
-})
+
+app.post("/blogpost/delete/:id", (req, res) => {
+    const postId = req.params.id;
+
+    // Find the blog post by ID
+    Blog.findOne({ _id: postId }, (err, post) => {
+        if (err) {
+            console.log(err);
+            return res.redirect("/");
+        }
+
+        // Check if the post exists
+        if (!post) {
+            console.log("Post not found");
+            return res.redirect("/");
+        }
+
+        // Delete the associated image file if imagePath exists
+        if (post.imagePath) {
+            const imagePath = path.join(__dirname, 'public', 'uploads', post.imagePath);
+            fs.unlink(imagePath, (err) => {
+                if (err) {
+                    console.log("Error deleting image file:", err);
+                } else {
+                    console.log("Image file deleted successfully");
+                }
+            });
+        }
+
+        // Delete the blog post from the database
+        Blog.deleteOne({ _id: postId }, (err) => {
+            if (err) {
+                console.log("Error deleting post from the database:", err);
+            } else {
+                console.log("Post deleted successfully");
+            }
+            res.redirect("/");
+        });
+    });
+});
 
 
 //////////////////////////////////////////////////////////////////////////////
-app.post("/compose",(req,res)=>
-{
-   const post = new Blog(
+app.post("/compose", upload.single('image'), (req, res) => {
+   let imagePath = ''; // Initialize imagePath
 
-   {
+   // Check if req.file exists and set imagePath accordingly
+   if (req.file) {
+      imagePath = req.file.filename;
+   }
+
+
+   const post = new Blog({
       title: req.body.postText,
-      content: req.body.postBody
-   })
+      content: req.body.postBody,
+      imagePath: imagePath ,// Save the filename as imagePath, even if it's an empty string
+      imageLink:req.body.imageLink
+   });
 
-   post.save((err)=>{
-
-    if(!err)
-    {
-        res.redirect('/')
-    }
-    else{
-            console.log(err)
-          
-    }
-   })
+   post.save((err) => {
+      if (!err) {
+         res.redirect('/');
+      } else {
+         console.log(err);
+         res.redirect('/compose'); // Handle error as per your requirement
+      }
+   });
+});
 
     // const post ={ title:req.body.postText,
     //                             context:req.body.postBody 
@@ -167,7 +210,7 @@ app.post("/compose",(req,res)=>
     // console.log(posts )                      
    
 
-})
+// })
 
 
 app.get("/blogpost/edit/:id", (req, res) => {
@@ -186,7 +229,9 @@ app.post("/blogpost/update/:id", (req, res) => {
   const postId = req.params.id;
   const updatedPost = {
     title: req.body.postText,
-    content: req.body.postBody
+    content: req.body.postBody,
+      imagePath: req.file.filename,// Save the filename as imagePath, even if it's an empty string
+      imageLink:req.body.imageLink
   };
 
   Blog.updateOne({ _id: postId }, updatedPost, (err) => {

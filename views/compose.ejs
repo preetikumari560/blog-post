@@ -1,26 +1,30 @@
 <%- include('partials/header'); -%>
 
 <main>
-  <form action="/compose" method="post" onsubmit="return validateForm()">
+  <form action="/compose" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
     <fieldset>
       <h2 class="compose-title">Title</h2>
-      <input class="form-text" type="text" name="postText" id="postText" placeholder="" >
+      <input class="form-text title" type="text" name="postText" id="postText" placeholder="" >
     </fieldset>
     <fieldset>
       <h2 class="compose-title">Content</h2>
-      <textarea class="form-text" name="postBody" id="postBody" cols="30" rows="5"></textarea>
+      <textarea class="form-text content" name="postBody" id="postBody" cols="30" rows="5"></textarea>
+          <div class="form-text compose-div"  >
+         <input type="file" name="image" id="image">
+       <input  type="text" name="imageLink" id="imageLink" placeholder=" Or Paste image link">
+       </div>
     </fieldset>
     <button class="compose-button" name="submit" type="submit">Submit</button>
   </form>
 </main>
 
-<%- include('partials/footer'); -%>
+
 
 <script>
   function validateForm() {
     const postText = document.getElementById("postText").value;
     const postBody = document.getElementById("postBody").value;
-
+   
     if (!postText || !postBody) {
       alert("Please fill in all fields.");
       return false; // Prevent form submission
@@ -29,3 +33,4 @@
     return true; // Allow form submission
   }
 </script>
+<%- include('partials/footer'); -%>

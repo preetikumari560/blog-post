@@ -11,9 +11,23 @@
         <!-- console.log(element.title ) -->
 
         <h2> <%=element.title.substring(0, 100)  %> </h2> <!-- substring(0, 100) use to trunc long string where 0 is starting character nd 100 is 100th character ,at where we want a string to display-->
-        <p> <%=element.content.substring(0, 100) + "...." %> <a  href= "/blogpost/<%=element._id%>" >Read More</a></p>
+        <div class="div-home">
+      
      
-    <%  }     )  %>
+    <% if (element.imagePath) { %>
+                <img class="home-img" src="/uploads/<%= element.imagePath %>" alt="Image">
+          
+           
+<% } else if (element.imageLink) {  %>
+               
+                <img class="home-img" src="<%= element.imageLink %>" alt="Image">
+            <% }  %>
+
+
+              <p> <%=element.content.substring(0, 100) + "...." %> <a  href= "/blogpost/<%=element._id%>" >Read More</a></p>
+
+</div>
+        <% }); %>
 
     </section>
 

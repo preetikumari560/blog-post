@@ -10,9 +10,22 @@
      <form action="/blogpost/edit/<%=id%>" method="get">   
      <button class="edit" type="submit" name="edit" value="<%=id%>"><i class="bi bi-pen"></i></button> 
     </form>
+<div class="post-div">
 
-    <p><%= content %></p>
- 
+    <% if (imagePath) { %>
+                <img class="post-img" src="/uploads/<%= imagePath %>" alt="Image">
+          
+           
+    <% } else if (imageLink) {  %>
+               
+                <img class="post-img" src="<%= imageLink %>" alt="Image">
+            <% }  %>
+
+
+        <p><%= content %></p>
+</div>
+ </div>
+
     
 </main>
 
