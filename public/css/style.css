@@ -422,15 +422,13 @@ width: 200px;
 }
 
 p {
-padding: 0px ;
+padding: 25px ;
 }
 
 
-    
-    h2
-    {
+h2{
 text-align: center;
-    }
+}
 .create-blog a {
    font-size: 1.5rem;
        padding: 15px;
@@ -479,7 +477,7 @@ h2 {
 
 }
 p {
-padding: 25px 0;
+padding: 25px ;
 }
 a
 {
