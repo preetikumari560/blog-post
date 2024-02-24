@@ -1,7 +1,7 @@
 <%- include('partials/header'); -%>
 
 <main>
-  <form action="/blogpost/update/<%= post._id %>" method="post">
+  <form action="/blogpost/update/<%= post._id %>" enctype="multipart/form-data" method="post">
     <fieldset>
       <h2>Title</h2>
       <input class="form-text title" type="text" name="postText" value="<%= post.title %>" placeholder="">

@@ -23,8 +23,8 @@
                 <img class="home-img" src="<%= element.imageLink %>" alt="Image">
             <% }  %>
 
-
-              <p> <%=element.content.substring(0, 100) + "...." %> <a  href= "/blogpost/<%=element._id%>" >Read More</a></p>
+                 <p style= "<%= (element.imagePath || element.imageLink) 
+                 ? 'padding: 20px 0;' : 'padding: 10px 0;' %> "> <%=element.content.substring(0, 100) + "...." %> <a  href= "/blogpost/<%=element._id%>" >Read More</a></p>
 
 </div>
         <% }); %>

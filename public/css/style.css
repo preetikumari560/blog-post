@@ -11,11 +11,11 @@ height: 100%;
 
 }
 
-p{
+/* p{ */
     /* line-height: 30px; */
-    padding: 25px ;
+    /* padding: 35px 0; */
     /* text-align: justify; */
-}
+/* } */
 
 
 h2
@@ -199,7 +199,7 @@ width: 50%;
 display: grid;
    
 grid-template-columns: 80% 10% 10%;
-grid-template-rows:  auto;
+grid-template-rows:  150px auto auto;
 color: black;
 
 }
@@ -210,9 +210,10 @@ color: black;
   grid-row: 1/2;
   font-size: 2.5rem;
   color: green;
-margin: 50px;
+margin: 20px 100px;
+margin-right: 0;
 
-text-align: center;
+
 overflow-wrap: anywhere;
 }
 
@@ -223,7 +224,7 @@ overflow-wrap: anywhere;
     color: black;
     padding: 10px 15px;
     border-radius: 75px;
-    margin: 50px 20px;
+    margin: 20px;
 }
     
 .delete
@@ -242,9 +243,9 @@ grid-row: 1/2;
 
 .post p{
 overflow-wrap: break-word;
-
-text-align: justify;
-padding: 20px 100px ;
+line-height: 2;
+/* text-align: justify; */
+padding: 0 100px ;
 
 }
 
@@ -262,8 +263,16 @@ min-height: 78.8vh;
 .aboutContact-main
 {
 min-height: 72vh;
+
 }
 
+.aboutContact-main p
+{
+
+padding: 50px;
+line-height: 2;
+
+}
 .home-main
 
 {
@@ -379,6 +388,7 @@ background-color:rgb(189 184 184);
 
 .home-img
 {
+border: solid 3px #0c7e21;
 width: 100px;
 margin-right: 50px;
 height: 100px;
@@ -390,7 +400,7 @@ align-self: center;
 display: flex;
 flex-direction: row;
 overflow-wrap: anywhere;
-margin-bottom: 15px;
+margin-bottom: 30px;
 }
 
 .post-div{
@@ -398,15 +408,14 @@ margin-bottom: 15px;
   grid-row: 2/3;
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  /* justify-content: center; */
+
 }
 
 .post-img
 {
 width: 250px;
 
-margin:0 auto;
+margin:0 auto 20px;
 border: 4px solid #d5dedb;
 
 }
@@ -421,9 +430,7 @@ width: 200px;
 
 }
 
-p {
-padding: 25px ;
-}
+
 
 
 h2{
@@ -449,14 +456,14 @@ text-align: center;
     padding: 0px 50px;
 }
 
-.post button {
+/* .post button {
 
     margin: 50px 0;
-}
+} */
 .post h1 {
 
     font-size: 2.2rem;
- text-align: left;
+ /* text-align: left; */
 }
 
 .post p
@@ -477,7 +484,7 @@ h2 {
 
 }
 p {
-padding: 25px ;
+padding: 25px 0;
 }
 a
 {
@@ -522,7 +529,7 @@ margin: 30px auto;
 .post h1 {
 
     font-size: 1.7rem;
- text-align: left;
+ /* text-align: left; */
  margin: 35px 35px 0;
 }
 
@@ -557,9 +564,9 @@ margin: 30px auto;
    padding: 13px;
 
 }
-.post-img{
+/* .post-img{
  margin: 0 35px;
-}
+} */
    
    
 }

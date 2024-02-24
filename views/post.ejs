@@ -22,7 +22,17 @@
             <% }  %>
 
 
-        <p><%= content %></p>
+        <!-- <p><%= content %></p> -->
+        <% content.split("\n").forEach(function(paragraph) { %>
+
+           <% var words = paragraph.split(" ").length; %>
+            <% if (words >= 20) { %>
+                <p style="text-align: justify;"><%= paragraph %></p>
+            <% } else { %>
+                <p style="text-align: center;"><%= paragraph %></p>
+            <% } %>
+            <!-- <p><%= paragraph %></p> -->
+        <% }); %>
 </div>
  </div>
 

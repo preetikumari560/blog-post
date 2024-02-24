@@ -57,9 +57,9 @@ const blogSchema = {
 const Blog = mongoose.model("blog",blogSchema)  // 'blog' which is turn out to be 'blogs' in mongoshell is a collection
 
 
-const aboutsContent="Welcome to my blog! I am so glad you stopped by to read my latest post. Whether you're a regular reader or new to my blog, I hope you'll find something interesting and useful here.In this blog, I will be sharing my thoughts, insights, and experiences on a wide range of topics. From technology and science to travel and lifestyle, I love exploring new subjects and sharing what I learn with others.My goal is to provide you with informative, thought-provoking content that inspires you to learn, grow, and achieve your goals. I believe that we all have the potential to do great things, and I hope my blog can be a source of inspiration and motivation for you.So, take a look around, read some of my posts, and don't hesitate to leave a comment or get in touch with me. I would love to hear from you and learn more about your interests and ideas.Thank you for visiting my blog, and I hope you enjoy your stay"
+const aboutsContent="Welcome to my blog! I am so glad you stopped by to read my latest post. Whether you're a regular reader or new to my blog, I hope you'll find something interesting and useful here.In this blog, I will be sharing my thoughts, insights, and experiences through poem on a wide range of topics. From technology and science to travel and lifestyle, I love exploring new subjects and sharing what I learn with others.My goal is to provide you with informative, thought-provoking content that inspires you to learn, grow, and achieve your goals. I believe that we all have the potential to do great things, and I hope my blog can be a source of inspiration and motivation for you.So, take a look around, read some of my posts, and don't hesitate to  get in touch with me. I would love to hear from you and learn more about your interests and ideas.Thank you for visiting my blog, and I hope you enjoy your stay"
 
-const contactsContent ="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime perspiciatis consequatur dolorem doloribus expedita fugit quaerat dolores blanditiis, nihil illo. Ut omnis recusandae quibusdam exercitationem ratione hic odit optio nesciunt.Quo doloremque repellendus in, quod ea magni incidunt possimus inventore ratione voluptatem facere eos ducimus nihil similique voluptatibus, unde blanditiis, quidem perspiciatis nisi pariatur quia voluptates nesciunt! Voluptate, quos veritatis."
+const contactsContent ="Email: preeti650kumari@gmail.com"
 
 
 
@@ -225,23 +225,73 @@ app.get("/blogpost/edit/:id", (req, res) => {
   });
 });
 
-app.post("/blogpost/update/:id", (req, res) => {
+app.post("/blogpost/update/:id", upload.single('image'), (req, res) => {
   const postId = req.params.id;
-  const updatedPost = {
-    title: req.body.postText,
-    content: req.body.postBody,
-      imagePath: req.file.filename,// Save the filename as imagePath, even if it's an empty string
-      imageLink:req.body.imageLink
-  };
 
-  Blog.updateOne({ _id: postId }, updatedPost, (err) => {
-    if (!err) {
-      res.redirect("/");
-    } else {
+  // Find the existing blog post by ID
+  Blog.findById(postId, (err, post) => {
+    if (err) {
       console.log(err);
+      return res.redirect("/");
     }
+
+    // Create an object to hold the updated post data
+    let updatedPost = {
+      title: req.body.postText,
+      content: req.body.postBody,
+      imagePath: post.imagePath, // Keep existing imagePath
+      imageLink: post.imageLink // Keep existing imageLink
+    };
+
+    // Check if a new file is uploaded
+    if (req.file) {
+      // Delete the existing image file if imagePath exists
+      if (post.imagePath) {
+        const imagePath = path.join(__dirname, 'public', 'uploads', post.imagePath);
+        fs.unlink(imagePath, (err) => {
+          if (err) {
+            console.log("Error deleting image file:", err);
+          } else {
+            console.log("Image file deleted successfully");
+          }
+        });
+      }
+
+      // Update the imagePath with the new filename
+      updatedPost.imagePath = req.file.filename;
+    }
+
+    // Update the blog post in the database
+    Blog.updateOne({ _id: postId }, updatedPost, (err) => {
+      if (!err) {
+        res.redirect("/");
+      } else {
+        console.log(err);
+        res.redirect("/"); // Handle error as per your requirement
+      }
+    });
   });
 });
+
+
+
+// app.post("/blogpost/update/:id", (req, res) => {
+//   const postId = req.params.id;
+//   const updatedPost = {
+//     title: req.body.postText,
+//     content: req.body.postBody,
+//       imagePath: req.file.filename,// Save the filename as imagePath, even if it's an empty string
+//       imageLink:req.body.imageLink
+//   };
+
+//   Blog.updateOne({ _id: postId }, updatedPost, (err) => {
+//     if (!err) {
+//       res.redirect("/");
+//     } else {
+//       console.log(err);
+//     }
+//   });
+// });
 
 
 app.listen('5000',()=>
